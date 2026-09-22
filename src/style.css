@@ -661,7 +661,14 @@ textarea {
     line-height: 1.8;
 }
 
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px
+}
+
 .tech-tags span {
+
     padding:
         5px
         8px;
@@ -1307,7 +1314,7 @@ textarea {
 @media (max-width: 600px) {
 
     .section {
-        padding: 72px 0;
+        padding: 48px 0;
     }
 
     .container {
@@ -1315,11 +1322,11 @@ textarea {
     }
 
     .hero-content {
-        padding: 64px 16px;
+        padding: 40px 16px;
     }
 
     .hero-image {
-        min-height: 400px;
+        min-height: 320px;
     }
 
     .hero-stats {
@@ -1341,6 +1348,24 @@ textarea {
         grid-template-columns: 1fr;
     }
 
+    .about-grid {
+        display: grid;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .about-img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .about-img img {
+        width: 70%;
+        height: auto;
+        object-fit: contain;
+    }
+
     .skills-grid {
         grid-template-columns: 1fr;
     }
@@ -1349,6 +1374,26 @@ textarea {
         grid-template-columns: 1fr;
 
         gap: 12px;
+    }
+
+    .timeline-detail-panel p {
+
+        margin-bottom: 10px;
+
+        line-height: normal;
+    }
+
+    .timeline-detail-panel li {
+
+        text-align: left;
+        margin-bottom: 5px;
+        
+        line-height: normal;
+    }
+
+    .timeline-picture {
+        padding-top: 10px;
+        max-width: 200px;
     }
 
     .contact-route {
