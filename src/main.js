@@ -1,3 +1,4 @@
+import './style.css'
 
 const CHARSET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-./";
 
