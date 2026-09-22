@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "flag-icons": "^7.5.0",
     "three": "^0.186.0"
   }
 }
