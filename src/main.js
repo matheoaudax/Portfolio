@@ -156,46 +156,65 @@ function initializeSmoothNavigation() {
 }
 
 function initializeContactForm() {
-  const form = document.querySelector("#contact-form");
 
-  if (!form) {
-    return;
-  }
+    const form = document.querySelector("#contact-form");
 
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    const formData = new FormData(form);
-
-    const name = formData.get("name");
-    const email = formData.get("email");
-    const message = formData.get("message");
-
-    console.log("Contact form:");
-    console.log({
-      name,
-      email,
-      message
-    });
-
-    /*
-     * IMPORTANT :
-     *
-     * Ici le formulaire est seulement intercepté.
-     */
-
-    const button = form.querySelector("button[type='submit']");
-
-    if (button) {
-      const originalText = button.innerHTML;
-
-      button.innerHTML = 'MESSAGE SENT <span class="text-air-400">✓</span>';
-
-      setTimeout(() => {
-        button.innerHTML = originalText;
-      }, 3000);
+    if (!form) {
+        return;
     }
-  });
+
+    form.addEventListener("submit", async (event) => {
+
+        event.preventDefault();
+
+        const button = form.querySelector("button[type='submit']");
+        const originalText = button.innerHTML;
+
+        button.innerHTML = "SENDING...";
+
+        const formData = new FormData(form);
+
+        try {
+
+            const response = await fetch(form.action, {
+                method: "POST",
+                body: formData,
+                headers: {
+                    "Accept": "application/json"
+                }
+            });
+
+            if (response.ok) {
+
+                button.innerHTML =
+                    'MESSAGE SENT <span class="text-air-400">✓</span>';
+
+                form.reset();
+
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                }, 3000);
+
+            } else {
+
+                button.innerHTML = "ERROR";
+
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                }, 3000);
+            }
+
+        } catch (error) {
+
+            console.error(error);
+
+            button.innerHTML = "ERROR";
+
+            setTimeout(() => {
+                button.innerHTML = originalText;
+            }, 3000);
+        }
+    });
 }
 
 function initializeProjectCarousel() {
